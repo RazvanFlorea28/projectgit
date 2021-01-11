@@ -11,5 +11,11 @@
              }
             }
         }
+       stage("Creating VMs and provisiong using Vagrant and Ansible"){
+           steps {
+            echo 'Execute Vagrant up'
+            bat "ipconfig -all"
+           }
+       }
     }
 }
