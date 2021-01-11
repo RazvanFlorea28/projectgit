@@ -1,9 +1,12 @@
 pipeline {
     agent any 
     stages {
-        stage('Stage 1') {
+        stage('CloneRepo') {
             steps {
-                echo 'Hello world!' 
+                bat ("""
+                git clone https://github.com/RazvanFlorea28/projectgit.git
+                echo "pulled the code"
+                """)
             }
         }
     }
