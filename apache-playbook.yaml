@@ -1,0 +1,48 @@
+---
+- hosts: all
+
+  handlers:
+    - name: restart apache
+      become: yes
+      become_user: root
+      service: name=httpd state=restarted
+
+  tasks:
+
+    - name: install the EPEL release rpm 
+      become: yes
+      become_user: root
+      yum:
+        name: http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+        state: present
+        
+    - name: install php
+      become: yes
+      become_user: root
+      yum:        
+        name: php
+        state: latest
+        
+    - name: copy index.php
+      become: yes
+      become_user: root
+      copy:
+        src: /vagrant/index.php
+        dest: /var/www/html
+        mode: 0777
+        
+    - name: Ensure Apache is at the Latest version
+      become: yes
+      become_user: root
+      tags:
+        - web
+      yum:
+        name: httpd
+        state: latest
+
+    - name: Make Sure the Apache is Running
+      tags:
+        - web
+      become: yes
+      become_user: root
+      service: name=httpd state=restarted enabled=yes
