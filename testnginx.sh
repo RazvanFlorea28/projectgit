@@ -3,8 +3,8 @@
 echo "Checking if the NGINX is up.."
 sleep 1
 
-var1=$( sudo docker exec -it nginx bash -c "service nginx status | cut -d' ' -f3")
-if [[ $var1 ]] ; then
+var1=$( sudo docker inspect --format="{{.State.Running}}" nginx )
+if [[ "$var1" == "true" ]] ; then
 	echo "Service Nginx is running."
 else
 	echo "Service Nginx is not running."
