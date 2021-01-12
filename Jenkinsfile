@@ -11,11 +11,19 @@ pipeline {
              }
             }
         }
-       stage("Creating VMs and provisiong using Vagrant and Ansible"){
+       stage("Creating webserver01 VM and provisiong using Vagrant and Ansible"){
            steps { 
                dir('C:\\project\\new\\projectgit'){
                     echo 'Execute Vagrant up'
-                     bat "vagrant up webserver1"
+                    bat "vagrant up webserver1"
+               }
+           }
+       }
+        stage("Creating webserver02 and provisiong using Vagrant and Ansible"){
+           steps { 
+               dir('C:\\project\\new\\projectgit'){
+                    echo 'Execute Vagrant up'
+                    bat "vagrant up webserver2"
                }
            }
        }
