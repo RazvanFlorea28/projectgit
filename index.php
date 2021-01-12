@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Web01</title>
+    <title>WebServer</title>
   </head>
   <body>
 	<?php echo "Hello from server: " ?>
