@@ -15,7 +15,7 @@ pipeline {
            steps { 
                dir('C:\\project\\new\\projectgit'){
                     echo 'Execute Vagrant up'
-                     bat "vagrant up"
+                     bat "vagrant up webserver1"
                }
            }
        }
