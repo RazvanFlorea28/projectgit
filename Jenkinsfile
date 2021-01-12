@@ -38,10 +38,10 @@ pipeline {
         stage("Testing webserver1 ports and services"){
            steps { 
                dir('C:\\project\\new\\projectgit'){
-                    bat ("""""
+                    bat ("""
 		    vagrant ssh webserver1 -c "cd /vagrant && sed -i -e 's/\\r\$//' testweb.sh"
                     vagrant ssh webserver1 -c "cd /vagrant && ./testweb.sh"
-                    """"")
+                    """)
                }
            }
        }
