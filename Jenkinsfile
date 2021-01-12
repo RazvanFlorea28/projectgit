@@ -1,40 +1,6 @@
 pipeline {
     agent any 
     stages {
-        stage('CloneRepo') {
-            steps {
-             dir('C:\\project\\new'){
-                    bat("""
-                    git clone https://github.com/RazvanFlorea28/projectgit.git
-                    echo "pulled the code" 
-                    """)
-             }
-            }
-        }
-       stage("Creating webserver01 VM and provisiong using Vagrant and Ansible"){
-           steps { 
-               dir('C:\\project\\new\\projectgit'){
-                    echo 'Execute Vagrant up for webserver1'
-                    bat "vagrant up webserver1"
-               }
-           }
-       }
-        stage("Creating webserver02 and provisiong using Vagrant and Ansible"){
-           steps { 
-               dir('C:\\project\\new\\projectgit'){
-                    echo 'Execute Vagrant up for webserver2'
-                    bat "vagrant up webserver2"
-               }
-           }
-       }
-        stage("Creating nginx and provisiong using Vagrant and Docker"){
-           steps { 
-               dir('C:\\project\\new\\projectgit'){
-                    echo 'Execute Vagrant up for nginx'
-                    bat "vagrant up nginx"
-               }
-           }
-       }
         stage("Testing webserver1 ports and services"){
            steps { 
                dir('C:\\project\\new\\projectgit'){
