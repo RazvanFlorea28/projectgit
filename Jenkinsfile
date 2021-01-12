@@ -13,7 +13,7 @@ pipeline {
         }
        stage("Creating VMs and provisiong using Vagrant and Ansible"){
            steps { 
-               dir('C:\\project\\new'){
+               dir('C:\\project\\new\\projectgit'){
                     echo 'Execute Vagrant up'
                      bat "vagrant up"
                }
