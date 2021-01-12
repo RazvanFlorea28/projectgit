@@ -1,10 +1,21 @@
 pipeline {
     agent any 
     stages {
-        stage('Stage 1') {
+        stage('CloneRepo') {
             steps {
-                echo 'Hello world!' 
+             dir('C:\\project\\new'){
+                    bat("""
+                    git clone https://github.com/RazvanFlorea28/projectgit.git
+                    echo "pulled the code" 
+                    """)
+             }
             }
         }
+       stage("Creating VMs and provisiong using Vagrant and Ansible"){
+           steps {
+            echo 'Execute Vagrant up'
+            bat "vagrant up"
+           }
+       }
     }
 }
